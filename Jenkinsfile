@@ -1,7 +1,8 @@
 pipeline {
     agent any
     environment {
-        DOCKER_CREDENTIALS = credentials('docker-hub-credentials')
+        DOCKER_USER = 'harshsinngh'
+        DOCKER_PASS = credentials('docker-hub-credentials')
     }
     stages {
         stage('Checkout') {
@@ -26,7 +27,7 @@ pipeline {
 
         stage('Docker Build & Push') {
             steps {
-                sh 'echo $DOCKER_CREDENTIALS | docker login --username harshsinngh --password-stdin'
+                sh 'docker login -u $DOCKER_USER -p $DOCKER_PASS'
                 sh 'docker build -t harshsinngh/devops-learning-app:latest .'
                 sh 'docker push harshsinngh/devops-learning-app:latest'
             }
