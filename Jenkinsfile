@@ -26,9 +26,9 @@ pipeline {
 
         stage('Docker Build & Push') {
             steps {
-                sh 'echo $DOCKER_CREDENTIALS | docker login --username harshsingh0509 --password-stdin'
-                sh 'docker build -t harshsingh0509/devops-learning-app:latest .'
-                sh 'docker push harshsingh0509/devops-learning-app:latest'
+                sh 'echo $DOCKER_CREDENTIALS | docker login --username harshsinngh --password-stdin'
+                sh 'docker build -t harshsinngh/devops-learning-app:latest .'
+                sh 'docker push harshsinngh/devops-learning-app:latest'
             }
         }
 
